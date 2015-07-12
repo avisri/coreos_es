@@ -24,12 +24,11 @@ ExecStart=/bin/bash -c '\
   fi; \
   /usr/bin/docker --debug=true run \
     --name %p-%i \
-    --name %p-%i \
     --publish 9200:9200 \
     --publish 9300:9300 \
     --volume /data/elasticsearch:/data \
     elasticsearch \
-    elasticsearch \
+    /elasticsearch/bin/elasticsearch \
     --node.name=%p-%i \
     --cluster.name=logstash \
     --network.publish_host=${COREOS_PRIVATE_IPV4} \
